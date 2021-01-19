@@ -57,32 +57,28 @@ def game_scene():
 
 
         # repeat forever, or you turn it off
-    while True:
         # get user input
-        keys = ugame.buttons.get_pressed()
-        
-        if keys & ugame.K_X:
-            pass
-        if keys & ugame.K_O:
+        if keys & ugame.K_X != 0:
             pass
         if keys & ugame.K_START:
-            pass
+            print("Start")
         if keys & ugame.K_SELECT:
-            pass
-        if keys & ugame.K_RIGHT:
-            if ship.x <= constants.SCREEN_X - constants.SPRITE_SIZE:
-                ship.move(ship.x + 1, ship.y)
+            print("Select")
+
+        if keys & ugame.K_RIGHT != 0:
+            if ship.x < constants.SCREEN_X - constants.SPRITE_SIZE:
+                ship.move((ship.x + constants.SPRITE_MOVEMENT_SPEED), ship.y)
             else:
                 ship.move(constants.SCREEN_X - constants.SPRITE_SIZE, ship.y)
 
-        if keys & ugame.K_LEFT:
-            if ship.x >= 0:
-                ship.move(ship.x - 1, ship.y)
+        if keys & ugame.K_LEFT != 0:
+            if ship.x > 0:
+                ship.move((ship.x - constants.SPRITE_MOVEMENT_SPEED), ship.y)
             else:
                 ship.move(0, ship.y)
-        if keys & ugame.K_UP:
+        if keys & ugame.K_UP !=0:
             pass
-        if keys & ugame.K_DOWN:
+        if keys & ugame.K_DOWN != 0:
             pass
         
         # update game logic
